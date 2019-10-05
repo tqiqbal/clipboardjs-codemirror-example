@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Clipboard + CodeMirror example</title>
+    <link rel="stylesheet" href="code-mirror/lib/codemirror.css">
+    <script src="code-mirror/lib/codemirror.js"></script>
+    <script src="code-mirror/mode/xml.js"></script>
+    <link rel="stylesheet" href="code-mirror/theme/monokai.css">
+    <script src="clipboard/clipboard.min.js"></script>
+</head>
+
+<body>
+
+    <h1>Copy to Clipboard example with CodeMirror editor</h1>
+    <!-- Trigger Clipboard copy command -->
+    <button class="btn" data-clipboard-target="#myEditor">
+        Copy to clipboard
+    </button>
+    <!-- Create XML editor instance  -->
+    <textarea id="myEditor"></textarea>
+
+    <script>
+        let myCodeMirror = CodeMirror.fromTextArea(document.getElementById('myEditor'), {
+            mode: "xml",
+            theme: "monokai"
+        });
+
+        let clipboard = new ClipboardJS('.btn', {
+            text: function (trigger) {
+                return myCodeMirror.getValue();
+            }
+        });
+
+    </script>
+</body>
+
+</html
