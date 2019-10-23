@@ -9,6 +9,7 @@
     <script src="code-mirror/mode/xml.js"></script>
     <link rel="stylesheet" href="code-mirror/theme/monokai.css">
     <script src="clipboard/clipboard.min.js"></script>
+
 </head>
 
 <body>
@@ -16,15 +17,19 @@
     <h1>Copy to Clipboard example with CodeMirror editor</h1>
     <!-- Trigger Clipboard copy command -->
     <button class="btn" data-clipboard-target="#myEditor">
-        Copy to clipboard
+        <img src="icon/content_copy_grey_24x24.png" alt="" srcset="">
     </button>
+
     <!-- Create XML editor instance  -->
     <textarea id="myEditor"></textarea>
 
     <script>
+        let initialValue = "Copy to Clipboard example with CodeMirror editor example";
+
         let myCodeMirror = CodeMirror.fromTextArea(document.getElementById('myEditor'), {
             mode: "xml",
-            theme: "monokai"
+            theme: "monokai",
+            value: "Example"
         });
 
         let clipboard = new ClipboardJS('.btn', {
